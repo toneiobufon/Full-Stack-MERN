@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import FirstStep from '../components/FirstStep.js';
 import Header from '../components/Header.js';
 import SecondStep from '../components/SecondStep.js';
+import ThirdStep from '../components/ThirdStep.js';
 
 const AppRouter = () => (
 

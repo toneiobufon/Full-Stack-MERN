@@ -7,25 +7,36 @@ import csc from 'country-state-city';
 
 const ThirdStep = (props) => {
 
-    const [countries, setCounties] = useState([]);
+    const [countries, setCountries] = useState([]);
     const [states, setState] =useState([]);
     const [cities, setCities] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
-    const [selectedCounty, setSelectedCountry] = useState('');
+    const [selectedCountry, setSelectedCountry] = useState('');
     const [selectedState, setSelectedState] = useState('');
     const [selectedCity, setSelectedCity] = useState('');
 
     useEffect(() => {
         const getCountries = async () => {
             try {
+                setIsLoading(true);
                 const result = await csc.getAllCountries();
-                console.log(result);
-            } catch(error){}
+                let allCountries = [];
+                allCountries = result?.map(({ isoCode, name}) => ({
+                    isoCode,
+                    name
+                }));
+                const [{ isoCode: firstCountry} = {}] = allCountries;
+                setCountries(allCountries);
+                setSelectedCountry(firstCountry);
+                setIsLoading(false);
+                
+            } catch(error){
+                setCountries([]);
+                setIsLoading(false);
+            };
         };
-
         getCountries();
-        
     },[]);
 
     const handleSubmit= async (event) =>{
