@@ -5,3 +5,5 @@ const Header = () => {
         <h1>Registration</h1>
     </div>
 }
+
+export default Header;
