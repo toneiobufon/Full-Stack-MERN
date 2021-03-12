@@ -14,6 +14,7 @@ const AppRouter = () => (
                 <Switch>
                     <Route component={FirstStep} path="/" exact={true} />
                     <Route component={SecondStep} path="/second" />
+                    <Route component={ThirdStep} path= "/third"/>
                 </Switch>
             </div>
         </BrowserRouter>
