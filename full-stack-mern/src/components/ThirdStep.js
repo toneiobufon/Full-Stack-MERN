@@ -45,7 +45,27 @@ const ThirdStep = (props) => {
 
     return (
         <Form className='input-form' onSubmit={handleSubmit}>
-            <div className= 'col-md-6 offset-md-3'></div>
+            <div className= 'col-md-6 offset-md-3'>
+                <Form.Group controlId = 'country'>
+                    {isLoading && (
+                        <p className='loading'>Countries are loading.....</p>
+                    )}
+                    <Form.Label>Country</Form.Label>
+                    <Form.Control
+                      as= 'select'
+                      name='country'
+                      value={selectedCountry}
+                      onChange ={(event) => setSelectedCountry(event.target.value)}
+                    >
+                        {countries.map(({ isoCode, name})=> (
+                            <option value={isoCode} key={isoCode}>
+                                {name}
+                            </option>
+                        ))}
+                    </Form.Control>
+
+                </Form.Group>
+            </div>
         </Form>
     );
 };
