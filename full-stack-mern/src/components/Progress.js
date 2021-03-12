@@ -1,6 +1,6 @@
 import React from 'react';
 
-const progress = () => {
+const Progress = () => {
     return (
         <React.Fragment>
             <div className='steps'>
@@ -20,3 +20,5 @@ const progress = () => {
         </React.Fragment>
     );
 };
+
+export default Progress;
