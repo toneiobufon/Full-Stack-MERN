@@ -3,7 +3,7 @@ import React from 'react';
 const FirstStep = () => {
   return (
     <div>
-      First Step Form
+      Start Here
     </div>
   )
 };
