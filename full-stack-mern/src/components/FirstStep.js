@@ -7,6 +7,7 @@ const FirstStep = (props) => {
 
     const onSubmit = (data) => {
         console.log(data);
+        props.history.push('/second');
     }
 
     return(
