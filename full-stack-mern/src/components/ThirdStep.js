@@ -41,12 +41,12 @@ const ThirdStep = (props) => {
 
     useEffect(() => {
         const getStates = async () => {
-          try {
+            try {
             const result = await csc.getStatesOfCountry(selectedCountry);
             let allStates = [];
             allStates = result?.map(({ isoCode, name }) => ({
-              isoCode,
-              name
+                isoCode,
+                name
             }));
             console.log({ allStates });
             const [{ isoCode: firstState = '' } = {}] = allStates;
@@ -54,15 +54,37 @@ const ThirdStep = (props) => {
             setSelectedCity('');
             setStates(allStates);
             setSelectedState(firstState);
-          } catch (error) {
+            } catch (error) {
             setStates([]);
             setCities([]);
             setSelectedCity('');
-          }
+            }
         };
     
         getStates();
-      }, [selectedCountry])
+        }, [selectedCountry])
+
+    useEffect(() => {
+        const getCities = async () => {
+        try {
+            const result = await csc.getCitiesOfState(
+                selectedCountry,
+                selectedState
+            );
+            let allCities = [];
+            allCities = result?.map(({ name }) => ({
+                name
+            }));
+            const [{ name: firstCity = '' } = {}] = allCities;
+            setCities(allCities);
+            setSelectedCity(firstCity);
+            } catch (error) {
+            setCities([]);
+            }
+        };
+    
+        getCities();
+        }, [selectedState]);
 
     const handleSubmit= async (event) =>{
         event.preventDefault();
@@ -106,7 +128,7 @@ const ThirdStep = (props) => {
                             ))
                         ) : (
                             <option value="" key="">
-                                No state found
+                                No states in this country
                             </option>
                         )}
                     </Form.Control>
