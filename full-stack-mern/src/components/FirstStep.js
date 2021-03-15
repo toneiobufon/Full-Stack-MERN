@@ -3,7 +3,13 @@ import {useForm} from 'react-hook-form';
 import { Form , Button} from 'react-bootstrap';
 
 const FirstStep = (props) => {
-    const { register, handleSubmit, errors} = useForm();
+    const {user} = props;
+    const { register, handleSubmit, errors} = useForm({
+        defaultValues: {
+            first_name: user.first_name,
+            last_name:user.last_name
+        }
+    })
 
     const onSubmit = (data) => {
         console.log(data);
