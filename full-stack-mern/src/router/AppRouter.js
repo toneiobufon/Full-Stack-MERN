@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import FirstStep from '../components/FirstStep.js';
 import Header from '../components/Header.js';
+import Login from '../components/Login.js';
 import SecondStep from '../components/SecondStep.js';
 import ThirdStep from '../components/ThirdStep.js';
 
@@ -47,6 +48,7 @@ const AppRouter = () => {
                             )}
                             path="/third"
                     />
+                <Route component={Login} path="login"/>
                 </Switch>
             </div>
         </BrowserRouter>
