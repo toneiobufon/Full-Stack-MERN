@@ -48,7 +48,7 @@ const AppRouter = () => {
                             )}
                             path="/third"
                     />
-                <Route component={Login} path="login"/>
+                <Route component={Login} path="/login"/>
                 </Switch>
             </div>
         </BrowserRouter>
