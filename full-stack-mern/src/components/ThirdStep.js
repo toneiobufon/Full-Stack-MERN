@@ -109,6 +109,7 @@ const ThirdStep = (props) => {
             Swal.fire('Buongiorno!', "You're registered, non e male!", 'success').then(
                 (result) => {
                   if (result.isConfirmed || result.isDismissed) {
+                    props.resetUser();
                     props.history.push('/');
                   }
                 }
