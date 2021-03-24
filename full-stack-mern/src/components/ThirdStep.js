@@ -4,6 +4,7 @@ import axios from 'axios';
 import {BASE_API_URL} from '../utils/constants.js';
 import csc from 'country-state-city';
 import {motion} from 'framer-motion';
+import Swal from 'sweetalert2';
 
 
 const ThirdStep = (props) => {
@@ -105,12 +106,24 @@ const ThirdStep = (props) => {
               ...user,
               ...updatedData
             });
-          } catch (error) {
-            if (error.response) {
-              console.log('error', error.response.data);
+            Swal.fire('Buongiorno!', "You're registered, non e male!", 'success').then(
+                (result) => {
+                  if (result.isConfirmed || result.isDismissed) {
+                    props.history.push('/');
+                  }
+                }
+              );
+            } catch (error) {
+              if (error.response) {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Non mi va...',
+                  text: error.response.data
+                });
+                console.log('error', error.response.data);
+              }
             }
-          }
-        };
+          };
 
     return (
         <Form className='input-form' onSubmit={handleSubmit}>
